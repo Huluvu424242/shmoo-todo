@@ -1,0 +1,8 @@
+{
+  "name": "Shmoo Todo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "803906a6"
+}
