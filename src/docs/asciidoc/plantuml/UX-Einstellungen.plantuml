@@ -1,0 +1,19 @@
+@startsalt
+
+<style>
+saltDiagram {
+ LineColor blue
+ BackgroundColor #fadcb1
+}
+</style>
+
+
+title <color:blue>Einstellungen
+header <color:blue>Einstellungen
+{
+  = <color:blue>Datenbank
+
+  <color:blue><&arrow-circle-right> |^<color:blue>Datenbankauswahl              ^ <color:blue>Default                                    (öffentlich)^ <color:blue>#7383-8393-8373-abn-38391 (persönlich)^ <color:blue>#7383-8393-8373-abn-55555 (office)^ |  <:clipboard:> | [<color:blue>Neu]
+
+}
+@endsalt
