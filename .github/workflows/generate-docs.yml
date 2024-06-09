@@ -1,0 +1,66 @@
+name: Generate Docs
+
+on:
+  push:
+  workflow_dispatch: {}
+
+jobs:
+  #  build:
+  #
+  #    runs-on: ubuntu-latest
+  #
+  #    steps:
+  #      - uses: actions/checkout@v3
+  #      - name: Set up JDK ${{ matrix.java-version }}
+  #        uses: actions/setup-java@v3
+  #        with:
+  #          distribution: 'zulu'
+  #          java-version: ${{ matrix.java-version }}
+  #          java-package: jdk
+  #          cache: 'maven'
+  #
+  #      - name: Build with Maven
+  #        run: ./mvnw -Pgenerate-docs
+
+  new_docs:
+    permissions:
+      id-token: write # Enable OIDC
+      pull-requests: write
+      contents: write
+    runs-on: ubuntu-latest
+    name: Make a new pull request
+    steps:
+      #      - uses: tlylt/install-graphviz@main  # falls dot installiert werden muss # löschen
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: ${{ matrix.java-version }}
+          java-package: jdk
+          cache: 'maven'
+      - uses: chainguard-dev/actions/setup-gitsign@main
+      - name: Generate docs with Maven
+        shell: bash
+        run: ./mvnw -Pgenerate-docs
+
+      # Der master ist geschützt per PR und verfied commits, also kein push
+      #      - name: Push generated docs with git
+      #        shell: bash
+      #        run: |
+      #          git add docs/*
+      #          git commit -S -m "New Doc version generated"
+      #          git push
+
+      # Der master ist geschützt per PR und verfied commits
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6.0.0
+        with:
+          title: "New generated docs PR!"
+
+    strategy:
+      matrix:
+        java-version:
+          - 19
