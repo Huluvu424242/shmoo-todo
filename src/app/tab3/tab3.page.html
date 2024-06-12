@@ -18,29 +18,34 @@
         <ion-card-header>
             Allgemein
         </ion-card-header>
-        <ion-card-content>
+        <ion-card-content class="ion-no-padding">
             <ion-list lines="full">
                 <ion-list-header>
                     Datenbank
                 </ion-list-header>
                 <ion-item>
-                    <ion-input type="text" label="Orbit Hash"></ion-input>
-                    <ion-select>
-                        <ion-select-option>Default</ion-select-option>
-                        <ion-select-option>#3434-83839002-28292</ion-select-option>
-                        <ion-select-option>#3434-83839002-66666</ion-select-option>
+                    <ion-toggle
+                            [enableOnOffLabels]="true"
+                            slot="start"
+                            #manualHash
+                    >Schlüssel manuell eingeben
+                    </ion-toggle>
+                </ion-item>
+                <ion-item>
+                    <ion-input *ngIf="manualHash.checked"
+                               type="text"
+                               placeholder="enter your orbit hash here"
+                               label="Orbit Hash:"></ion-input>
+                    <ion-select *ngIf="!manualHash.checked"
+                                justify="start"
+                                align="left"
+                                label="Orbit Hash:"
+                                value="0">
+                        <ion-select-option value="0">Default</ion-select-option>
+                        <ion-select-option value="1">#3434-83839002-28292</ion-select-option>
+                        <ion-select-option value="2">#3434-83839002-66666</ion-select-option>
                     </ion-select>
                 </ion-item>
-<!--                <ion-item>-->
-<!--                    <ion-button shape="round" fill="outline">-->
-<!--                        <ion-icon slot="start" name="stop-outline"></ion-icon>-->
-<!--                        Abbrechen-->
-<!--                    </ion-button>-->
-<!--                    <ion-button shape="round">-->
-<!--                        <ion-icon slot="start" name="save"></ion-icon>-->
-<!--                        Speichern-->
-<!--                    </ion-button>-->
-<!--                </ion-item>-->
                 <ion-grid>
                     <ion-row>
                         <ion-col>
@@ -64,70 +69,4 @@
     </ion-card>
 
 
-    <ion-list lines="full">
-        <ion-list-header>
-            Datenbank
-        </ion-list-header>
-        <ion-item>
-            <ion-input type="text" label="Orbit Hash"></ion-input>
-            <ion-select>
-                <ion-select-option>Default</ion-select-option>
-                <ion-select-option>#3434-83839002-28292</ion-select-option>
-                <ion-select-option>#3434-83839002-66666</ion-select-option>
-            </ion-select>
-        </ion-item>
-        <ion-grid>
-            <ion-row>
-                <ion-col>
-                    <ion-button shape="round" fill="outline">
-                        <ion-icon slot="start" name="stop-outline"></ion-icon>
-                        Abbrechen
-                    </ion-button>
-                </ion-col>
-                <ion-col>
-                    <ion-button shape="round">
-                        <ion-icon slot="start" name="save"></ion-icon>
-                        Speichern
-                    </ion-button>
-
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-        <ion-item>
-            <ion-button shape="round" fill="outline">
-                <ion-icon slot="start" name="stop-outline"></ion-icon>
-                Abbrechen
-            </ion-button>
-            <ion-button shape="round">
-                <ion-icon slot="start" name="save"></ion-icon>
-                Speichern
-            </ion-button>
-        </ion-item>
-    </ion-list>
-
-
-
-    <!--&lt;!&ndash;    <ion-grid>&ndash;&gt;-->
-    <!--&lt;!&ndash;        <ion-row>&ndash;&gt;-->
-    <!--&lt;!&ndash;            <ion-col size="12">&ndash;&gt;-->
-    <!--                <ion-card color="medium">-->
-    <!--                    <ion-card-header>-->
-    <!--                        <ion-card-subtitle>Orbit DB</ion-card-subtitle>-->
-    <!--                        <ion-card-title>Datenbank</ion-card-title>-->
-    <!--                    </ion-card-header>-->
-
-    <!--                    <ion-card-content>-->
-    <!--                        <ion-toggle [checked]="false" [enableOnOffLabels]="true">Manuelle Eingabe</ion-toggle>-->
-    <!--&lt;!&ndash;                        <ion-item>&ndash;&gt;-->
-    <!--                            <ion-label>Orbit Key</ion-label>-->
-    <!--                            <ion-input>Default</ion-input>-->
-    <!--&lt;!&ndash;                        </ion-item>&ndash;&gt;-->
-    <!--                        Here's a small text description for the card content. Nothing more, nothing less.-->
-    <!--                    </ion-card-content>-->
-    <!--                </ion-card>-->
-    <!--&lt;!&ndash;            </ion-col>&ndash;&gt;-->
-    <!--&lt;!&ndash;        </ion-row>&ndash;&gt;-->
-    <!--&lt;!&ndash;    </ion-grid>&ndash;&gt;-->
-
-    <!--  <app-explore-container name="Einstellungen"></app-explore-container>-->
 </ion-content>
