@@ -1,0 +1,8 @@
+Quelle
+
+aktuell:
+https://github.com/orbitdb/orbitdb/blob/main/docs/GETTING_STARTED.md
+
+2022: https://github.com/cppshane/orbit-chat
+
+älter? https://shaneduffy.io/blog/decentralized-backend-building-an-angular-dapp-with-orbitdb-and-ipfs
