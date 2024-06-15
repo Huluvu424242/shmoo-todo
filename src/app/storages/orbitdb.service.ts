@@ -72,20 +72,21 @@ export class OrbitdbService implements OnInit {
 
     async ngOnInit(): Promise<void> {
 
-        const orbitdb = await this.startOrbitDB()
-        const db1 = await orbitdb.open('db1')
-        await db1.add('hello world!')
-        console.log(await db1.all())
-        await this.stopOrbitDB(orbitdb)
+        const orbitdb = await this.startOrbitDB();
+        const db1 = await orbitdb.open('db1');
+        await db1.add('hello world!');
+        console.log(await db1.all());
+        await this.stopOrbitDB(orbitdb);
     }
 
-    async startOrbitDB(id?: string, identity?: string, identities?: string[], directory?: string) {
+    async startOrbitDB(id?: any, identity?: any, identities?: any, directory?: any) {
         const options = this.isBrowser ? this.DefaultLibp2pBrowserOptions : this.DefaultLibp2pOptions
         const libp2p = await createLibp2p({...options})
         directory = directory || '.'
         const blockstore = new LevelBlockstore(`${directory}/ipfs/blocks`)
         const ipfs = await createHelia({libp2p, blockstore, blockBrokers: [bitswap()]})
-        return await createOrbitDB({ipfs, id, identity, identities, directory});
+        const orbitdb = await createOrbitDB({ipfs, id, identity, identities, directory})
+        return orbitdb
     }
 
     /**
@@ -93,11 +94,10 @@ export class OrbitdbService implements OnInit {
      * @function stopOrbitDB
      * @param {Object} orbitdb The OrbitDB instance to stop.
      */
-    async stopOrbitDB(orbitdb: any): Promise<void> {
-        await orbitdb.stop();
-        await orbitdb.ipfs.stop();
-        await orbitdb.ipfs.blockstore.unwrap().unwrap().close();
-    };
-
+    async stopOrbitDB(orbitdb: any) {
+        await orbitdb.stop()
+        await orbitdb.ipfs.stop()
+        await orbitdb.ipfs.blockstore.unwrap().unwrap().close()
+    }
 
 }
