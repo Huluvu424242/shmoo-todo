@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
 
         const ipfs = await createHelia({libp2p: libp2pOptions})
         const orbitdb = await createOrbitDB({ipfs})
-        const db = await orbitdb.open('browser')
+        const db = await orbitdb.open('shmoo-todo')
         console.log(`OrbitDB Address: ${db.address}`);
     }
 
