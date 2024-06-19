@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {OrbitDBService} from "./services/OrbitDBService";
 
 declare function greet(): void;
 
@@ -9,7 +10,12 @@ declare function greet(): void;
 })
 export class AppComponent implements OnInit {
 
+    constructor(private orbitDBService:OrbitDBService) {
+    }
+
+
     async ngOnInit(): Promise<void> {
         greet();
+        await this.orbitDBService.init();
     }
 }
