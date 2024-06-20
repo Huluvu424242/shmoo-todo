@@ -114,3 +114,8 @@
   --ion-background-color-step-950: #0c0a8c;
 
 }
+
+// Button mit CamelCase Text nicht gebrüllt
+ion-button {
+  text-transform: none;
+}
