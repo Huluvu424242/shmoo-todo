@@ -24,12 +24,13 @@
                     Datenbank
                 </ion-list-header>
                 <ion-item>
-                    <ion-button shape="round" fill="outline">
+                    <ion-button shape="round" slot="start">
+                        <ion-icon slot="start" name="save-outline"></ion-icon>
+                        save and use new db
+                    </ion-button>
+                    <ion-button shape="round" fill="outline" slot="end">
                         <ion-icon slot="start" name="flash"></ion-icon>
                         generate new db
-                    </ion-button>
-                    <ion-button shape="round">
-                        save and use new db
                     </ion-button>
                 </ion-item>
                 <ion-item>
@@ -56,17 +57,10 @@
                 <ion-grid>
                     <ion-row>
                         <ion-col>
-                            <ion-button shape="round" fill="outline">
-                                <ion-icon slot="start" name="close-circle-outline"></ion-icon>
-                                Abbrechen
-                            </ion-button>
-                        </ion-col>
-                        <ion-col>
                             <ion-button shape="round">
-                                <ion-icon slot="start" name="save"></ion-icon>
-                                Speichern
+                                <ion-icon slot="start" name="save-outline"></ion-icon>
+                                Alles Speichern
                             </ion-button>
-
                         </ion-col>
                     </ion-row>
                 </ion-grid>
