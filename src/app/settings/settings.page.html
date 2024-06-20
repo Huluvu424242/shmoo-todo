@@ -8,66 +8,73 @@
 </ion-header>
 
 <ion-content>
-    <!--<ion-content [fullscreen]="true">-->
     <ion-header collapse="condense">
         <ion-toolbar>
-            <ion-title size="large">Einstellungen</ion-title>
+            <ion-title size="large">Datenbank</ion-title>
         </ion-toolbar>
     </ion-header>
-    <ion-card>
-        <ion-card-header>
-            Allgemein
-        </ion-card-header>
-        <ion-card-content class="ion-no-padding">
-            <ion-list lines="full">
-                <ion-list-header>
-                    Datenbank
-                </ion-list-header>
-                <ion-item>
-                    <ion-button shape="round" slot="start">
-                        <ion-icon slot="start" name="save-outline"></ion-icon>
-                        save and use new db
-                    </ion-button>
-                    <ion-button shape="round" fill="outline" slot="end">
-                        <ion-icon slot="start" name="flash"></ion-icon>
-                        generate new db
-                    </ion-button>
-                </ion-item>
-                <ion-item>
-                    <ion-select #auswahl
-                                justify="start"
-                                label="Orbit DB:"
-                                value="default">
-                        <ion-select-option value="new">New</ion-select-option>
-                        <ion-select-option value="default">Default</ion-select-option>
-                        <ion-select-option value="1">#3434-83839002-28292</ion-select-option>
-                        <ion-select-option value="2">#3434-83839002-66666</ion-select-option>
-                    </ion-select>
-                    <ion-input *ngIf="auswahl.value==='new'"
-                               type="text"
-                               placeholder="enter your db name"
-                               label="DB Name:"
-                    ></ion-input>
-                    <ion-input *ngIf="auswahl.value==='new'"
-                               type="text"
-                               placeholder="enter your orbit hash here or generate once"
-                               label="Orbit DB Hash:"
-                    ></ion-input>
-                </ion-item>
-                <ion-grid>
-                    <ion-row>
-                        <ion-col>
-                            <ion-button shape="round">
-                                <ion-icon slot="start" name="save-outline"></ion-icon>
-                                Alles Speichern
-                            </ion-button>
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
-            </ion-list>
-        </ion-card-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+            </ion-col>
+            <ion-col>
+                <ion-button shape="round">
+                    <ion-icon slot="start" name="save-outline"></ion-icon>
+                    Save and Use new DB
+                </ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button shape="round" fill="outline">
+                    <ion-icon slot="start" name="flash"></ion-icon>
+                    Generate new DB
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-select #auswahl
+                            justify="start"
+                            label="Orbit DB:"
+                            value="default">
+                    <ion-select-option value="new">New</ion-select-option>
+                    <ion-select-option value="default">Default</ion-select-option>
+                    <ion-select-option value="1">#3434-83839002-28292</ion-select-option>
+                    <ion-select-option value="2">#3434-83839002-66666</ion-select-option>
+                </ion-select>
+            </ion-col>
+            <ion-col>
+                <ion-input *ngIf="auswahl.value==='new'"
+                           type="text"
+                           placeholder="enter your db name"
+                           label="DB Name:"
+                           class="required"
+                ></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-input *ngIf="auswahl.value==='new'"
+                           type="text"
+                           placeholder="enter your orbit hash here or generate once"
+                           label="Orbit DB Hash:"
+                           class="required"
+                ></ion-input>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button shape="round">
+                    <ion-icon slot="start" name="save-outline"></ion-icon>
+                    Alles Speichern
+                </ion-button>
+            </ion-col>
+            <ion-col>
+            </ion-col>
+            <ion-col>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
-    </ion-card>
+
+
 
 
 </ion-content>
