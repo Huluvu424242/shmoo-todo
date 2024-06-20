@@ -8,6 +8,15 @@ import {OrbitDBService} from "../services/OrbitDBService";
 })
 export class SettingsPage implements OnInit{
 
+
+    // protected auswahl:string ="default";
+
+    private  auswahlOptionen = new Map<string, string>([
+        ["New", "new"],
+        ["Default", "default"]
+    ]);
+
+
     database:any;
     constructor(private orbitDBService: OrbitDBService) {
     }

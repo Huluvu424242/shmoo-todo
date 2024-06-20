@@ -24,33 +24,40 @@
                     Datenbank
                 </ion-list-header>
                 <ion-item>
-                    <ion-toggle
-                            [enableOnOffLabels]="true"
-                            slot="start"
-                            #manualHash
-                    >Schlüssel manuell eingeben
-                    </ion-toggle>
+                    <ion-button shape="round" fill="outline">
+                        <ion-icon slot="start" name="flash"></ion-icon>
+                        generate new db
+                    </ion-button>
+                    <ion-button shape="round">
+                        save and use new db
+                    </ion-button>
                 </ion-item>
                 <ion-item>
-                    <ion-input *ngIf="manualHash.checked"
-                               type="text"
-                               placeholder="enter your orbit hash here"
-                               label="Orbit Hash:"></ion-input>
-                    <ion-select *ngIf="!manualHash.checked"
+                    <ion-select #auswahl
                                 justify="start"
-                                align="left"
-                                label="Orbit Hash:"
-                                value="0">
-                        <ion-select-option value="0">Default</ion-select-option>
+                                label="Orbit DB:"
+                                value="default">
+                        <ion-select-option value="new">New</ion-select-option>
+                        <ion-select-option value="default">Default</ion-select-option>
                         <ion-select-option value="1">#3434-83839002-28292</ion-select-option>
                         <ion-select-option value="2">#3434-83839002-66666</ion-select-option>
                     </ion-select>
+                    <ion-input *ngIf="auswahl.value==='new'"
+                               type="text"
+                               placeholder="enter your db name"
+                               label="DB Name:"
+                    ></ion-input>
+                    <ion-input *ngIf="auswahl.value==='new'"
+                               type="text"
+                               placeholder="enter your orbit hash here or generate once"
+                               label="Orbit DB Hash:"
+                    ></ion-input>
                 </ion-item>
                 <ion-grid>
                     <ion-row>
                         <ion-col>
                             <ion-button shape="round" fill="outline">
-                                <ion-icon slot="start" name="stop-outline"></ion-icon>
+                                <ion-icon slot="start" name="close-circle-outline"></ion-icon>
                                 Abbrechen
                             </ion-button>
                         </ion-col>
