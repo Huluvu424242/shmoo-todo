@@ -36,7 +36,7 @@
                             justify="start"
                             label="Orbit DB:"
                             value="default">
-                    <ion-select-option *ngFor="let dbKey of datenbanken.keys()" value="{{dbKey}}">
+                    <ion-select-option *ngFor="let dbKey of getOrderedDbAuswahlen()" value="{{dbKey}}">
                         {{ datenbanken.get(dbKey)?.name }}
                     </ion-select-option>
                 </ion-select>
@@ -46,7 +46,11 @@
                            placeholder="enter your db name"
                            label="DB Name:"
                            class="required"
-                           [value]="auswahl.value==='new'?'':datenbanken.get(auswahl.value)?.name"></ion-input>
+                           [value]="auswahl.value==='new'?'':datenbanken.get(auswahl.value)?.name"
+                           [tabindex]="auswahl.value==='new'?0:-1"
+                           [readonly]="auswahl.value==='new'?0:1"
+                ></ion-input>
+
             </ion-col>
             <ion-col>
                 <ion-input type="text"
@@ -54,6 +58,8 @@
                            label="Orbit DB Hash:"
                            class="required"
                            [value]="auswahl.value==='new'?'':datenbanken.get(auswahl.value)?.hash"
+                           [tabindex]="auswahl.value==='new'?0:-1"
+                           [readonly]="auswahl.value==='new'?0:1"
                 ></ion-input>
             </ion-col>
         </ion-row>
