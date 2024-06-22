@@ -31,6 +31,7 @@ export class SettingsPage implements OnInit {
     }
 
     database: any;
+    // /orbitdb/zdpuAnfs3RmxGNho1fQMwCWVrBa9KnPEhXuWzU5Cn4uC8fFRr
 
     constructor(private orbitDBService: OrbitDBService) {
         this.datenbanken.set("office", {name: 'Office', hash: '#3434-83839002-66666'});
@@ -41,6 +42,10 @@ export class SettingsPage implements OnInit {
 
     ngOnInit(): void {
         this.database = this.orbitDBService.getDB();
+    }
+
+    async connectNewDB(dbAddress:string){
+        await this.orbitDBService.connectNewDB(dbAddress)
     }
 
 }

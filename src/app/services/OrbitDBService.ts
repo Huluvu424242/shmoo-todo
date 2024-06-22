@@ -31,7 +31,7 @@ export class OrbitDBService {
 
     async startOrbitDB(): Promise<Database> {
         const {createHelia, libp2pDefaults} = Helia
-        const {createOrbitDB} = OrbitDB
+        const {createOrbitDB,IPFSAccessController} = OrbitDB
         const {gossipsub} = ChainsafeLibp2PGossipsub
         const libp2pOptions = libp2pDefaults()
 
@@ -39,10 +39,26 @@ export class OrbitDBService {
 
         const ipfs = await createHelia({libp2p: libp2pOptions})
         const orbitdb = await createOrbitDB({ipfs})
-        const db = await orbitdb.open('shmoo-todo')
+        console.log('Versuche Default DB zu öffnen');
+        const db = await orbitdb.open('shmoo-todo',{ AccessController: IPFSAccessController({ write: ['*']}) });
         console.log(`OrbitDB Address: ${db.address}`);
         return db;
     }
 
 
+    async connectNewDB(dbAddress: string) {
+        const {createHelia, libp2pDefaults} = Helia
+        const {createOrbitDB,IPFSAccessController} = OrbitDB
+        const {gossipsub} = ChainsafeLibp2PGossipsub
+        const libp2pOptions = libp2pDefaults()
+
+        libp2pOptions.services.pubsub = gossipsub()
+
+        const ipfs = await createHelia({libp2p: libp2pOptions})
+        const orbitdb = await createOrbitDB({ipfs})
+        console.log('Versuche New DB zu öffnen');
+        const db = await orbitdb.open(dbAddress,{ AccessController: IPFSAccessController({ write: ['*']}) });
+        console.log(`New OrbitDB Address: ${db.address}`);
+        return db;
+    }
 }

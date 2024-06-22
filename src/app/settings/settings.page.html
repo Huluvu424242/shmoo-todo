@@ -18,7 +18,7 @@
             <ion-col>
             </ion-col>
             <ion-col>
-                <ion-button shape="round">
+                <ion-button shape="round" (click)="connectNewDB(dbHash.value+'')">
                     <ion-icon slot="start" name="save-outline"></ion-icon>
                     Save and Use new DB
                 </ion-button>
@@ -42,7 +42,8 @@
                 </ion-select>
             </ion-col>
             <ion-col>
-                <ion-input type="text"
+                <ion-input #dbName
+                           type="text"
                            placeholder="enter your db name"
                            label="DB Name:"
                            class="required"
@@ -53,7 +54,8 @@
 
             </ion-col>
             <ion-col>
-                <ion-input type="text"
+                <ion-input #dbHash
+                           type="text"
                            placeholder="enter your orbit hash here or generate once"
                            label="Orbit DB Hash:"
                            class="required"
