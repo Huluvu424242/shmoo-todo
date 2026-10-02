@@ -20,7 +20,7 @@
     "@angular/forms": "^22.1.6",
     "@angular/platform-browser": "^22.1.6",
     "@angular/platform-browser-dynamic": "^20.0.7",
-    "@angular/router": "^22.1.6",
+    "@angular/router": "^22.2.0",
     "@capacitor-community/electron": "^5.0.1",
     "@capacitor/android": "^6.0.0",
     "@capacitor/app": "6.0.0",
